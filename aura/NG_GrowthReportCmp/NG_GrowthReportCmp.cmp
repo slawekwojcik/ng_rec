@@ -1,0 +1,50 @@
+<!-- c:NG_GrowthReportCmp -->
+
+<aura:component implements="flexipage:availableForAllPageTypes" controller="NG_GrowthReportCmpCtrl">
+    <aura:attribute name="results" type="Object[]" default="{}"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <lightning:card title="Growth report">
+        <table class="slds-table slds-table_bordered slds-table_cell-buffer">
+            <thead>
+                <tr class="slds-text-title_caps">
+                    <th scope="col">
+                        <div class="slds-truncate" title="Period Name">Period Name</div>
+                    </th>
+                    <th scope="col">
+                        <div class="slds-truncate" title="Growth rate">Growth rate</div>
+                    </th>
+                    <th scope="col">
+                        <div class="slds-truncate" title="Empl on start">Empl on start</div>
+                    </th>
+                    <th scope="col">
+                        <div class="slds-truncate" title="Empl on end">Empl on end</div>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <aura:iteration items="{!v.results}" var="result">
+                    <tr>
+                        <td>
+                            <div class="slds-truncate" title="{!result.name}">{!result.name}</div>
+                        </td>
+                        <td>
+                            <div class="slds-truncate" title="{!result.growth}">{!result.growth}</div>
+                        </td>
+                        <td>
+                            <div class="slds-truncate" title="{!result.empsOnStart}">{!result.empsOnStart}</div>
+                        </td>
+                        <td>
+                            <div class="slds-truncate" title="{!result.empsOnEnd}">{!result.empsOnEnd}</div>
+                        </td>                        
+                    </tr>
+                </aura:iteration>
+            </tbody>
+        </table>
+        
+    </lightning:card>
+    
+    
+    <lightning:spinner aura:id="mySpinner" variant="brand" alternativeText="Loading..." />
+</aura:component>
